@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { colors } from "./theme";
+import { colors, sizes } from "./theme";
 
 const config: Config = {
   darkMode: ["class"],
@@ -10,9 +10,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      height: {
-        'header': '50px'
-      },
+      height: sizes,
+      minHeight: sizes,
       colors: colors,
       borderRadius: {
         lg: 'var(--radius)',

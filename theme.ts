@@ -28,6 +28,10 @@ export const colors = {
   },
 };
 
+export const sizes = {
+  header: '50px',
+}
+
 export const theme = {
   colors,
 };

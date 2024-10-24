@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      height: {
+        'header': '50px'
+      },
       colors: colors,
       borderRadius: {
         lg: 'var(--radius)',

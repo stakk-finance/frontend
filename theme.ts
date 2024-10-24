@@ -21,6 +21,11 @@ export const colors = {
     secondary: '#b0bec5',
     muted: '#757575',
   },
+  border: {
+    DEFAULT: '#333333',
+    light: '#444444',
+    dark: '#292929',
+  },
 };
 
 export const theme = {

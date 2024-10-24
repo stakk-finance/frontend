@@ -2,9 +2,19 @@ import { colors } from './theme';
 
 export const shadcnTheme = {
   colors: {
-    primary: colors.primary.DEFAULT,
-    'primary-foreground': colors.primary.foreground,
-    secondary: colors.secondary.DEFAULT,
-    'secondary-foreground': colors.secondary.foreground,
+    background: colors.background.DEFAULT,
+    foreground: colors.text.primary,
+    primary: {
+      DEFAULT: colors.primary.DEFAULT,
+      foreground: colors.primary.foreground,
+    },
+    secondary: {
+      DEFAULT: colors.accent.DEFAULT,
+      foreground: colors.accent.foreground,
+    },
+    muted: {
+      DEFAULT: colors.background.lighter,
+      foreground: colors.text.muted,
+    },
   },
 };

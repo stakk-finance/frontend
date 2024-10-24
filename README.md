@@ -27,17 +27,9 @@ To run the project locally:
    ```
    npm install
    ```
-   or
-   ```
-   yarn install
-   ```
 3. Run the development server:
    ```
    npm run dev
-   ```
-   or
-   ```
-   yarn dev
    ```
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 

@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stakk Finance Frontend
 
-## Getting Started
+This project is a modern frontend application built with Next.js, Tailwind CSS, TypeScript, and shadcn/ui. It features a centralized theming system for consistent and easy-to-manage styling across the entire application.
 
-First, run the development server:
+## 🎨 Centralized Theming
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Our theming system allows for easy color management and consistency across the entire application. Here's how it works:
+
+1. Colors are defined once in `theme.ts`
+2. These colors are used in both Tailwind and shadcn/ui configurations
+3. The theme is applied via a `ThemeProvider` component
+
+### Key Files
+
+- `theme.ts`: Central color definitions
+- `tailwind.config.ts`: Tailwind configuration
+- `shadcn-theme.ts`: shadcn/ui theme mapping
+- `components/theme-provider.tsx`: Theme application
+- `app/layout.tsx`: Root layout with ThemeProvider
+
+## 🚀 Getting Started
+
+To run the project locally:
+
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+   or
+   ```
+   yarn install
+   ```
+3. Run the development server:
+   ```
+   npm run dev
+   ```
+   or
+   ```
+   yarn dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+
+## 📁 Project Structure
+
+- `src/hooks`: Custom React hooks. Use `useSample.tsx` as a template for new hooks.
+- `src/components`: React components. Use CamelCase for component names.
+- `public`: Static assets
+
+## 🎨 Editing / Adding Colors
+
+To edit or add colors to the theme:
+
+1. Open `theme.ts`
+2. Modify the `colors` object. For example:
+
+```typescript
+export const colors = {
+  primary: { DEFAULT: '#3b82f6', foreground: '#ffffff' },
+  secondary: { DEFAULT: '#10B981', foreground: '#ffffff' },
+  // Add more colors as needed
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. After modifying `theme.ts`, the changes will automatically reflect in both Tailwind and shadcn/ui themed components.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Use TypeScript for type-safe code
+- Follow the established naming conventions for hooks and components
+- Place new assets in the `/public` folder
+- Utilize the centralized theming system for consistent styling
 
-## Learn More
+## 🤝 Contributing
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome! Please feel free to submit a Pull Request.

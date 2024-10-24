@@ -1,12 +1,12 @@
+import { Theme } from '@/components/theme-provider';
 import { colors } from './theme';
 
-export const shadcnTheme = {
+export const shadcnTheme: Theme = {
   colors: {
     background: colors.background.DEFAULT,
     foreground: colors.text.primary,
     primary: {
       DEFAULT: colors.primary.DEFAULT,
-      foreground: colors.primary.foreground,
     },
     secondary: {
       DEFAULT: colors.accent.DEFAULT,

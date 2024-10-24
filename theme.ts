@@ -29,8 +29,25 @@ export const colors = {
 };
 
 export const sizes = {
-  header: '50px',
-}
+  container: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+    '2xl': '1440px',
+  },
+  content: {
+    sm: '20rem',   // 320px
+    md: '28rem',   // 448px
+    lg: '32rem',   // 512px
+    xl: '36rem',   // 576px
+    '2xl': '42rem',  // 672px
+    '3xl': '48rem',  // 768px
+  },
+  height: {
+    header: '50px',
+  }
+};
 
 export const theme = {
   colors,

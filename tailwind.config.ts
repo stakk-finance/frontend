@@ -10,8 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      height: sizes,
-      minHeight: sizes,
+      maxWidth: sizes.container,
+      width: sizes.container,
+      height: sizes.height,
+      minHeight: sizes.height,
       colors: colors,
       borderRadius: {
         lg: 'var(--radius)',

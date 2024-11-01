@@ -22,3 +22,18 @@ body {
   animation: moveGradient 4s ease infinite;
   background-size: 400% 400%;
 }
+
+.grid-background {
+background-image: 
+     linear-gradient(to right, rgba(255,255,255,0.1) 2px, transparent 2px),
+     linear-gradient(to bottom, rgba(255,255,255,0.1) 2px, transparent 2px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 800px 200px at center, black 0, rgba(0, 0, 0, 0.5) 600px 150px, transparent 800px 200px);
+  mask-image: radial-gradient(ellipse 800px 200px at center, black 0, rgba(0, 0, 0, 0.5) 600px 150px, transparent 800px 200px);
+}
+
+.grid-background:hover {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px);
+}

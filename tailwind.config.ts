@@ -15,6 +15,9 @@ const config: Config = {
       height: sizes.height,
       minHeight: sizes.height,
       colors: colors,
+      animation: {
+        'gradient': 'moveGradient 4s ease infinite'
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

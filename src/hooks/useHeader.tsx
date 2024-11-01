@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, Dispatch, SetStateAction, useContext, useState } from "react";
+import { createContext, Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 
 type HeaderProps = {
   isVisible: boolean;
@@ -18,7 +18,12 @@ export function useHeader() {
 }
 
 export function HeaderProvider({ children }: { children?: React.ReactNode }) {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // entry animation
+    setIsVisible(true);
+  }, [setIsVisible]);
 
   const providerValue: HeaderProps = {
     isVisible,

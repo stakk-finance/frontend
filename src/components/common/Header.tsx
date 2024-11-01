@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <div className="w-full justify-center items-center flex">
       <div
-        className={`transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-[100px]"} min-h-header w-lg border-border-light border p-4 fixed top-4 rounded-2xl backdrop-blur-sm bg-[#777880]/30`}
+        className={`transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-[100px]"} min-h-header w-lg border-border-light border p-4 fixed top-4 rounded-2xl backdrop-blur-md bg-[#777880]/30`}
       >
         <StakkLogoWide />
       </div>

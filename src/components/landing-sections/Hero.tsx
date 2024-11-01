@@ -15,11 +15,17 @@ export default function HeroSection() {
         <span className="text-secondary max-w-sm mt-4">
           Benefit from intelligent risk management, airdrop farming, and participate in key governance of leading DeFi projects like JUP and BONK, all in one platform.
         </span>
-        <div className="relative group inline-block mt-8">
-          <div className="absolute -inset-0.5 opacity-0 group-hover:opacity-30 rounded-xl blur-sm animate-gradient bg-gradient-to-r from-[#e96443] via-primary to-[#e96443] 
+
+        <div className="flex flex-row gap-4 items-center justify-center mt-8">
+          <div className="relative group inline-block">
+            <div className="absolute -inset-0.5 opacity-0 group-hover:opacity-30 rounded-xl blur-sm animate-gradient bg-gradient-to-r from-[#e96443] via-primary to-[#e96443] 
               group-hover:-inset-1 group-hover:blur-lg transition duration-300 ease-in-out" />
-          <Button className="relative" onClick={() => setIsVisible(prev => !prev)}>
-            Toggle Header
+            <Button className="relative" onClick={() => setIsVisible(prev => !prev)}>
+              Join Waitlist
+            </Button>
+          </div>
+          <Button variant={"outline"}>
+            Launch App
           </Button>
         </div>
       </div>

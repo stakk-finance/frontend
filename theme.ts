@@ -46,7 +46,7 @@ export const sizes = {
   },
   height: {
     header: '50px',
-    mainSection: '600px',
+    mainSection: '700px',
   }
 };
 

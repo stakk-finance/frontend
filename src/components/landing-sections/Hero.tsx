@@ -6,7 +6,7 @@ export default function HeroSection() {
   const { setIsVisible } = useHeader();
 
   return (
-    <div className="w-full flex justify-center items-center bg-gradient-to-b from-[#141E30] to-background relative overflow-hidden">
+    <div className="w-full flex justify-center items-center bg-gradient-to-b from-[#141E30] to-background relative overflow-hidden radial-bg">
       <GridBackground />
       <div className="flex-1 min-h-mainSection max-w-xl flex flex-col justify-center items-center relative text-center">
         <span className="text-6xl font-bold max-w-lg">

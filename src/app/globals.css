@@ -37,3 +37,8 @@ background-image:
     linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px);
 }
+
+.radial-bg {
+  background: radial-gradient(circle at top, #141E30 40%, #222222 60%);
+  width: 100%;
+}

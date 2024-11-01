@@ -13,9 +13,9 @@ export default function StakkLogoWide() {
 
   return (
     <React.Fragment>
-      <div onClick={handleLogoClick} className="cursor-pointer flex flex-row gap-4">
+      <div onClick={handleLogoClick} className="cursor-pointer flex flex-row gap-1 items-center">
         <div>
-          <StakkLogo />
+          <StakkLogo size={28} />
         </div>
         <span className="font-bold text-lg">Stakk Finance</span>
       </div>

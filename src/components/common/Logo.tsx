@@ -1,7 +1,11 @@
 import Image from "next/image";
 
-export default function StakkLogo() {
+type LogoProps = {
+  size?: number;
+}
+
+export default function StakkLogo({ size }: LogoProps) {
   return (
-    <Image src={'/images/logo.png'} alt="logo" height={30} width={30} />
+    <Image src={'/images/logo.png'} alt="logo" height={size ?? 30} width={size ?? 30} />
   );
 }

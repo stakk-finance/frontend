@@ -7,8 +7,10 @@ import React from 'react';
 const Home = () => {
   return (
     <main className='flex flex-col justify-center items-center'>
-      <HeroSection />
-      <AppShowcaseSection />
+      <div className='radial-bg'>
+        <HeroSection />
+        <AppShowcaseSection />
+      </div>
     </main>
   );
 };

@@ -39,6 +39,6 @@ background-image:
 }
 
 .radial-bg {
-  background: radial-gradient(circle at top, #141E30 40%, #222222 60%);
+  background: radial-gradient(circle at top, #141E30 40%, #222222 100%);
   width: 100%;
 }

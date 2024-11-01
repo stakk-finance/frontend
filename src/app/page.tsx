@@ -7,6 +7,8 @@ const Home = () => {
   return (
     <main className='flex flex-col justify-center items-center'>
       <HeroSection />
+      <div className='min-h-screen'>
+      </div>
     </main>
   );
 };

@@ -14,6 +14,7 @@ const config: Config = {
       width: sizes.container,
       height: sizes.height,
       minHeight: sizes.height,
+      textColor: colors.text,
       colors: colors,
       animation: {
         'gradient': 'moveGradient 4s ease infinite'

@@ -14,10 +14,10 @@ export default function StakkLogoWide() {
   return (
     <React.Fragment>
       <div onClick={handleLogoClick} className="cursor-pointer flex flex-row gap-1 items-center">
-        <div>
-          <StakkLogo size={28} />
+        <div className="w-6 h-6 lg:w-8 lg:h-8">
+          <StakkLogo />
         </div>
-        <span className="font-bold text-lg">Stakk Finance</span>
+        <span className="font-bold md:text-lg">Stakk Finance</span>
       </div>
     </React.Fragment>
   );

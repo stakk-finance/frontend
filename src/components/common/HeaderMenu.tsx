@@ -25,7 +25,7 @@ export default function HeaderMenu() {
   ]
 
   return (
-    <div className="flex-1 flex flex-row justify-center items-center gap-8">
+    <div className="flex-1 flex flex-row justify-center items-center gap-8 md:flex hidden">
       {headerItems.map(headerItem => (
         <Fragment key={`header-item-${headerItem.name}`}>
           <span className="hover:opacity-70 duration-300 text-xs cursor-pointer">{headerItem.name}</span>

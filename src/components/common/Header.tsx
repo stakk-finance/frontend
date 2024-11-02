@@ -10,12 +10,16 @@ export default function Header() {
 
   return (
     <div className="w-full justify-center items-center flex">
-      <div
-        className={`transition-transform duration-300 z-50 ${isVisible ? "translate-y-0" : "-translate-y-[100px]"} flex flex-row justify-between items-center min-h-header w-lg border-border-light/50 border pl-4 p-2 fixed top-4 rounded-2xl backdrop-blur-md bg-white/[0.08]`}
-      >
-        <StakkLogoWide />
-        <HeaderMenu />
-        <MagicButton />
+      <div className="w-full lg:w-lg fixed top-4 px-4 z-50">
+        <div
+          className={`transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-[100px]"} flex flex-row justify-between items-center min-h-header border-border-light/50 border pl-4 p-2 rounded-2xl backdrop-blur-md bg-white/[0.08]`}
+        >
+          <StakkLogoWide />
+          <HeaderMenu />
+          <div className="hidden md:block">
+            <MagicButton />
+          </div>
+        </div>
       </div>
     </div>
   );

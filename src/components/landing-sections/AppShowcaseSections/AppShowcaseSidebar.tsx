@@ -4,7 +4,7 @@ import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 
 export default function AppShowcaseSidebar() {
   return (
-    <div className="h-full w-[50px] border-r border-border bg-background flex flex-col items-center justify-between shadow-lg">
+    <div className="hidden md:flex h-full w-[50px] border-r border-border bg-background flex-col items-center justify-between shadow-lg">
       <div className="pt-3 flex flex-col gap-3">
         <div className="">
           <StakkLogo />

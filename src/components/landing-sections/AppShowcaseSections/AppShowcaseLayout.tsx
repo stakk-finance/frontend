@@ -2,6 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LuArrowUpRight, LuCoins, LuLock } from "react-icons/lu"
 import AppShowcaseSidebar from "./AppShowcaseSidebar"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import AppShowcaseBarChart from "./AppShowcaseBarChart";
+import YieldsChart from "./YieldsChart";
 
 export default function AppShowcaseLayout() {
   return (

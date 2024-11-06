@@ -59,15 +59,15 @@ export default function YieldsSection() {
   };
 
   return (
-    <Card className="col-span-2">
+    <Card className="col-span-1 md:col-span-2">
       <CardHeader>
         <CardTitle>Yield Performance</CardTitle>
         <CardDescription>Look at how your yields have performed compared to average trends</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-col md:flex-row md:justify-between items-center mb-4 gap-3">
           <Select value={timeRange} onValueChange={(value: TimeRange) => setTimeRange(value)}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-full md:w-[180px]">
               <SelectValue placeholder="Select time range" />
             </SelectTrigger>
             <SelectContent>
@@ -76,7 +76,7 @@ export default function YieldsSection() {
               <SelectItem value="1y">Last year</SelectItem>
             </SelectContent>
           </Select>
-          <Button size="sm" variant="outline" onClick={() => setSelectedDataPoint(null)}>Reset Selection</Button>
+          <Button className="w-full md:w-[180px]" size="sm" variant="outline" onClick={() => setSelectedDataPoint(null)}>Reset Selection</Button>
         </div>
         <ChartContainer config={chartConfig} className="min-h-[150px] max-h-[300px] w-full">
           <AreaChart

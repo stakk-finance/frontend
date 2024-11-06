@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartConfig, ChartTooltipContent } from "@/components/ui/chart";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { AreaChart, CartesianGrid, XAxis, YAxis, Area, Line, ReferenceLine, Tooltip, TooltipProps } from "recharts";
+import { AreaChart, CartesianGrid, XAxis, YAxis, Area, Line, ReferenceLine } from "recharts";
 import { colors } from "../../../../theme";
 
 interface YieldDataPoint {

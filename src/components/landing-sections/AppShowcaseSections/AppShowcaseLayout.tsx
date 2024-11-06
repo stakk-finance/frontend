@@ -2,7 +2,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LuArrowUpRight, LuCoins, LuLock } from "react-icons/lu"
 import AppShowcaseSidebar from "./AppShowcaseSidebar"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import AppShowcaseBarChart from "./AppShowcaseBarChart";
 import YieldsChart from "./YieldsChart";
 
 export default function AppShowcaseLayout() {
@@ -25,6 +24,9 @@ export default function AppShowcaseLayout() {
           </Breadcrumb>
         </div>
         <div className="flex-1 bg-transparent grid gap-4 md:grid-cols-2">
+
+          <YieldsChart />
+
           <Card className="w-full">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Staked</CardTitle>

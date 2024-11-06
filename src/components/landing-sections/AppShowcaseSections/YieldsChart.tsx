@@ -4,6 +4,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { ChartContainer, ChartTooltip, ChartConfig, ChartTooltipContent } from "@/components/ui/chart";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { AreaChart, CartesianGrid, XAxis, YAxis, Area, Line, ReferenceLine, Tooltip, TooltipProps } from "recharts";
+import { colors } from "../../../../theme";
 
 interface YieldDataPoint {
   month: string;
@@ -39,11 +40,11 @@ const getMonthsForTimeRange = (range: TimeRange): number => {
 const chartConfig: ChartConfig = {
   yield: {
     label: "Yield",
-    color: "hsl(var(--chart-1))",
+    color: colors.primary.DEFAULT,
   },
   average: {
     label: "Average",
-    color: "hsl(var(--chart-2))",
+    color: "#ffffff",
   },
 } satisfies ChartConfig;
 
@@ -61,7 +62,7 @@ export default function YieldsSection() {
     <Card className="col-span-2">
       <CardHeader>
         <CardTitle>Yield Performance</CardTitle>
-        <CardDescription>Interactive yield percentage over time</CardDescription>
+        <CardDescription>Look at how your yields have performed compared to average trends</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-center mb-4">
@@ -75,9 +76,9 @@ export default function YieldsSection() {
               <SelectItem value="1y">Last year</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" onClick={() => setSelectedDataPoint(null)}>Reset Selection</Button>
+          <Button size="sm" variant="outline" onClick={() => setSelectedDataPoint(null)}>Reset Selection</Button>
         </div>
-        <ChartContainer config={chartConfig} className="h-[400px]">
+        <ChartContainer config={chartConfig} className="min-h-[150px] max-h-[300px] w-full">
           <AreaChart
             data={filteredData}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}

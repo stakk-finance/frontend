@@ -42,3 +42,7 @@ background-image:
   background: radial-gradient(circle at top right, #4147D3AF 10%, #222222 80%);
   width: 100%;
 }
+
+.emboss-text {
+  text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.7);
+}

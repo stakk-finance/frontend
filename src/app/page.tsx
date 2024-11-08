@@ -6,6 +6,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import bgHero from "../../public/backgrounds/bg-hero-home.png";
 import { motion, useScroll, useTransform } from 'framer-motion';
+import WhyStakkSection from '@/components/landing-sections/WhyStakkSection';
 
 const Home = () => {
   const [windowHeight, setWindowHeight] = useState(0);
@@ -49,6 +50,10 @@ const Home = () => {
       </motion.div>
       <div className='mt-[90vh] z-40'>
         <AppShowcaseSection />
+      </div>
+
+      <div className='z-50 w-full'>
+        <WhyStakkSection />
       </div>
     </main>
   );

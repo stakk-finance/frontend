@@ -46,3 +46,11 @@ background-image:
 .emboss-text {
   text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.7);
 }
+
+.card-stack-item {
+  transition: transform 0.3s ease;
+}
+
+#card-stack {
+  height: 400px; /* Adjust based on your card height */
+}

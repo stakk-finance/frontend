@@ -26,9 +26,9 @@ const Home = () => {
 
   return (
     <main className='flex flex-col justify-center items-center bg-noise'>
-      <div className='z-0 fixed opacity-50 radial-bg top-0 w-full h-full' />
+      <div className='z-0 fixed opacity-50 radial-bg top-0 w-full h-full pointer-events-none' />
       <Image
-        className="z-0 fixed opacity-20 h-full w-full top-0"
+        className="z-0 fixed opacity-20 h-full w-full top-0 pointer-events-none"
         src={bgHero}
         alt="bg-blur"
         priority
@@ -40,14 +40,14 @@ const Home = () => {
           opacity,
           scale,
           transformOrigin: 'center center',
-          willChange: 'opacity, transform' // Hint to the browser for optimizations
+          willChange: 'opacity, transform',
+          zIndex: 30
         }}
-        className="fixed top-0 left-0 w-full h-full z-10"
+        className="fixed top-0 left-0 w-full h-[90vh] z-10"
       >
         <HeroSection />
       </motion.div>
-      <div className="relative z-20 w-full">
-        <div style={{ height: '80vh' }} /> {/* Spacer */}
+      <div className='mt-[90vh] z-40'>
         <AppShowcaseSection />
       </div>
     </main>

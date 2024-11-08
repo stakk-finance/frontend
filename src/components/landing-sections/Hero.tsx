@@ -6,7 +6,7 @@ export default function HeroSection() {
   const { setIsVisible } = useHeader();
 
   return (
-    <div className="w-full flex justify-center items-center relative overflow-hidden">
+    <div className="w-full h-full flex justify-center items-center relative overflow-hidden">
       <GridBackground />
       <div className="flex-1 min-h-mainSection max-w-xl flex flex-col justify-center items-center relative text-center">
         <span className="text-4xl md:text-4xl lg:text-6xl font-bold max-w-lg px-6 emboss-text">
@@ -20,11 +20,19 @@ export default function HeroSection() {
           <div className="relative group inline-block">
             <div className="absolute -inset-0.5 opacity-0 group-hover:opacity-30 rounded-xl blur-sm animate-gradient bg-gradient-to-r from-[#e96443] via-primary to-[#e96443] 
               group-hover:-inset-1 group-hover:blur-lg transition duration-300 ease-in-out" />
-            <Button className="relative" onClick={() => setIsVisible(prev => !prev)}>
+            <Button
+              className="relative z-50"
+              onClick={() => setIsVisible(prev => !prev)}
+              style={{ pointerEvents: 'auto' }}
+            >
               Join Waitlist
             </Button>
           </div>
-          <Button variant={"outline"}>
+          <Button
+            variant={"outline"}
+            className="z-50"
+            style={{ pointerEvents: 'auto' }}
+          >
             Launch App
           </Button>
         </div>

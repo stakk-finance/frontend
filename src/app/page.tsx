@@ -11,7 +11,7 @@ const Home = () => {
   const [windowHeight, setWindowHeight] = useState(0);
   const { scrollY } = useScroll();
 
-  const opacity = useTransform(scrollY, [0, (windowHeight - 200)], [1, 0]);
+  const opacity = useTransform(scrollY, [0, (windowHeight / 2)], [1, 0]);
   const scale = useTransform(scrollY, [0, windowHeight], [1, 0.8]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Home = () => {
         <HeroSection />
       </motion.div>
       <div className="relative z-20 w-full">
-        <div style={{ height: '100vh' }} /> {/* Spacer */}
+        <div style={{ height: '80vh' }} /> {/* Spacer */}
         <AppShowcaseSection />
       </div>
     </main>

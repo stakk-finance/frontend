@@ -9,7 +9,7 @@ export default function AppShowcaseLayout() {
     <div className="w-full h-full rounded-xl flex flex-row justify-start items-start bg-tranparent z-20 text-center overflow-hidden bg-background-darker border-border border">
       <AppShowcaseSidebar />
 
-      <div className="flex flex-col overflow-x-scroll w-full h-full">
+      <div className="flex flex-col w-full h-full">
         <div className="flex-1 flex-col gap-4 p-6">
           <div className="mb-4">
             <Breadcrumb>

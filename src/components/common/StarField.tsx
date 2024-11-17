@@ -24,14 +24,13 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const speedRef = useRef(2);
   const animationRef = useRef<number>();
-  const mouseRef = useRef({ x: 0, y: 0 });
 
   const updateDimensions = useCallback(() => {
     if (canvasRef.current) {
       const { clientWidth } = canvasRef.current.parentElement || document.body;
       setDimensions({
         width: clientWidth,
-        height: Math.max(minHeight, window.innerHeight)
+        height: Math.max(minHeight, window.innerHeight),
       });
     }
   }, [minHeight]);
@@ -69,40 +68,10 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
     const accelerationRate = 1.2;
     const decelerationRate = 0.95;
 
-    const handleMouseMove = (event: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current = {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top
-      };
-    };
-
-    canvas.addEventListener('mousemove', handleMouseMove);
-
     const animate = () => {
-      // Adjust speed
-      const targetSpeed = hyperSpace ? hyperSpeedMax : normalSpeed;
-
-      if (hyperSpace) {
-        // Accelerate exponentially
-        speedRef.current = Math.min(
-          hyperSpeedMax,
-          speedRef.current * accelerationRate
-        );
-      } else {
-        // Decelerate exponentially
-        speedRef.current = Math.max(
-          normalSpeed,
-          speedRef.current * decelerationRate
-        );
-      }
-
-      // Ensure we don't overshoot the target speed
-      if (hyperSpace && speedRef.current > targetSpeed) {
-        speedRef.current = targetSpeed;
-      } else if (!hyperSpace && speedRef.current < targetSpeed) {
-        speedRef.current = targetSpeed;
-      }
+      speedRef.current = hyperSpace
+        ? Math.min(hyperSpeedMax, speedRef.current * accelerationRate)
+        : Math.max(normalSpeed, speedRef.current * decelerationRate);
 
       ctx.clearRect(0, 0, width, height);
 
@@ -128,57 +97,24 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
           return;
         }
 
-        // Apply mouse influence
-        const mouseInfluence = 0.1;
-        const dx = mouseRef.current.x - x;
-        const dy = mouseRef.current.y - y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = Math.sqrt(width * width + height * height) / 2;
-        const influence = (1 - Math.min(distance / maxDistance, 1)) * mouseInfluence;
-
-        const adjustedX = x + dx * influence;
-        const adjustedY = y + dy * influence;
-
-        // Update tail
-        star.tail.unshift({ x: adjustedX, y: adjustedY });
-
-        // Calculate tail length based on speed, but cap it at MAX_TAIL_LENGTH
-        const tailLength = Math.min(Math.floor(speedRef.current), MAX_TAIL_LENGTH);
-
-        if (star.tail.length > tailLength) {
-          star.tail = star.tail.slice(0, tailLength);
+        star.tail.unshift({ x, y });
+        if (star.tail.length > MAX_TAIL_LENGTH) {
+          star.tail.pop();
         }
 
-        // Draw tail
         if (star.tail.length > 1) {
           ctx.beginPath();
           ctx.moveTo(star.tail[0].x, star.tail[0].y);
-          for (let i = 1; i < star.tail.length; i++) {
-            ctx.lineTo(star.tail[i].x, star.tail[i].y);
-          }
+          star.tail.forEach((point) => ctx.lineTo(point.x, point.y));
           ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
           ctx.lineWidth = radius * 2;
           ctx.stroke();
         }
 
-        // Draw star
-        const gradientRadius = Math.max(radius * 2.5, 0.1);
-        try {
-          const gradient = ctx.createRadialGradient(
-            adjustedX, adjustedY, 0,
-            adjustedX, adjustedY, gradientRadius
-          );
-          gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-          gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.8)');
-          gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-          ctx.beginPath();
-          ctx.arc(adjustedX, adjustedY, gradientRadius, 0, Math.PI * 2);
-          ctx.fillStyle = gradient;
-          ctx.fill();
-        } catch (error) {
-          console.error('Error drawing star:', error);
-        }
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fill();
       });
 
       animationRef.current = requestAnimationFrame(animate);
@@ -190,7 +126,6 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      canvas.removeEventListener('mousemove', handleMouseMove);
     };
   }, [dimensions, hyperSpace]);
 
@@ -205,7 +140,7 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
         height: `${dimensions.height}px`,
         pointerEvents: 'none',
         background: 'transparent',
-        ...style
+        ...style,
       }}
     />
   );

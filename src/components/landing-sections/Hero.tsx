@@ -11,7 +11,6 @@ export default function HeroSection() {
   return (
     <div className="w-full h-full flex justify-center items-center relative overflow-hidden">
       <Starfield minHeight={400} starCount={1000} hyperSpace={hyperSpace} />
-      <GridBackground />
       <div className="flex-1 min-h-mainSection max-w-xl flex flex-col justify-center items-center relative text-center">
         <span className="text-4xl md:text-4xl lg:text-6xl font-bold max-w-lg px-6 emboss-text">
           Maximize Your Yield with AI-Powered Staking

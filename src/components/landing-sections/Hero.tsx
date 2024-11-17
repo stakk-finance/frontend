@@ -1,6 +1,5 @@
 import { useHeader } from "@/hooks/useHeader";
 import { Button } from "../ui/button";
-import GridBackground from "../common/GridBackground";
 import Starfield from "../common/StarField";
 import { useState } from "react";
 

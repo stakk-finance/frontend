@@ -7,6 +7,16 @@ export default function HeroSection() {
   const { setIsVisible } = useHeader();
   const [hyperSpace, setHyperSpace] = useState(false);
 
+  const onMouseEnter = () => {
+    setHyperSpace(true);
+    setIsVisible(false);
+  }
+
+  const onMouseLeave = () => {
+    setHyperSpace(false);
+    setIsVisible(true);
+  }
+
   return (
     <div className="w-full h-full flex justify-center items-center relative overflow-hidden">
       <Starfield minHeight={400} starCount={1000} hyperSpace={hyperSpace} />
@@ -25,8 +35,8 @@ export default function HeroSection() {
             <Button
               className="relative z-50"
               onClick={() => setIsVisible(prev => !prev)}
-              onMouseEnter={() => setHyperSpace(true)}
-              onMouseLeave={() => setHyperSpace(false)}
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
               style={{ pointerEvents: 'auto' }}
             >
               Join Waitlist

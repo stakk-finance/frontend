@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stakk Finance - AI Powered Staking",
     description: "Maximize Your Yield with AI-Powered Staking",
-    url: "https://stakk.finance",
+    url: "https://www.stakk.ag/",
     siteName: "Stakk Finance",
     locale: "en_US",
     type: "website",
@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     images: ["/images/social-preview.png"],
     creator: "@stakkfinance",
   },
+  metadataBase: new URL("https://www.stakk.ag/"),
 };
 
 export default function RootLayout({

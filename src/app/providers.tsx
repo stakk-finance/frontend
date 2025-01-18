@@ -6,9 +6,7 @@ import { HeaderProvider } from "@/hooks/useHeader";
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider theme={shadcnTheme}>
-      <HeaderProvider>
-        {children}
-      </HeaderProvider>
+      <HeaderProvider>{children}</HeaderProvider>
     </ThemeProvider>
-  )
+  );
 }

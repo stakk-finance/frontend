@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 const GridBackground: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -16,20 +16,20 @@ const GridBackground: React.FC = () => {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   const gridStyle = {
-    transform: 'skew(-10deg)', // Adjust this value to change the lean angle
+    transform: "skew(-10deg)", // Adjust this value to change the lean angle
     backgroundImage: `
       linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
     `,
-    backgroundSize: '50px 50px',
+    backgroundSize: "50px 50px",
   };
 
   return (
@@ -51,12 +51,12 @@ const GridBackground: React.FC = () => {
             radial-gradient(circle 200px at ${mousePosition.x}px ${mousePosition.y}px, white, transparent),
             radial-gradient(ellipse 800px 200px at center, black 0, rgba(0, 0, 0, 1) 600px 150px, transparent 800px 200px)
           `,
-          maskComposite: 'intersect',
+          maskComposite: "intersect",
           WebkitMaskImage: `
             radial-gradient(circle 200px at ${mousePosition.x}px ${mousePosition.y}px, white, transparent),
             radial-gradient(ellipse 800px 200px at center, black 0, rgba(0, 0, 0, 1) 600px 150px, transparent 800px 200px)
           `,
-          WebkitMaskComposite: 'intersect',
+          WebkitMaskComposite: "intersect",
         }}
       />
     </div>

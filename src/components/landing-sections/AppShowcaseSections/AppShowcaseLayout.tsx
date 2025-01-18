@@ -1,7 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { LuArrowUpRight, LuCoins, LuLock } from "react-icons/lu"
-import AppShowcaseSidebar from "./AppShowcaseSidebar"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { LuArrowUpRight, LuCoins, LuLock } from "react-icons/lu";
+import AppShowcaseSidebar from "./AppShowcaseSidebar";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import YieldsChart from "./YieldsChart";
 
 export default function AppShowcaseLayout() {
@@ -25,47 +32,62 @@ export default function AppShowcaseLayout() {
             </Breadcrumb>
           </div>
           <div className="flex-1 bg-transparent grid gap-4 md:grid-cols-2">
-
             <YieldsChart />
 
             <Card className="w-full">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Staked</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Total Staked
+                </CardTitle>
                 <LuCoins className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">1,000 SOL</div>
-                <p className="text-xs text-muted-foreground">+20% from last month</p>
+                <p className="text-xs text-muted-foreground">
+                  +20% from last month
+                </p>
               </CardContent>
             </Card>
             <Card className="w-full">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Current APY</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Current APY
+                </CardTitle>
                 <LuArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">5.2%</div>
-                <p className="text-xs text-muted-foreground">+0.5% from last week</p>
+                <p className="text-xs text-muted-foreground">
+                  +0.5% from last week
+                </p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Rewards Earned</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Rewards Earned
+                </CardTitle>
                 <LuCoins className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">52 SOL</div>
-                <p className="text-xs text-muted-foreground">Since you started staking</p>
+                <p className="text-xs text-muted-foreground">
+                  Since you started staking
+                </p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Locked Period</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Locked Period
+                </CardTitle>
                 <LuLock className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">30 days</div>
-                <p className="text-xs text-muted-foreground">Until next unlock</p>
+                <p className="text-xs text-muted-foreground">
+                  Until next unlock
+                </p>
               </CardContent>
             </Card>
           </div>

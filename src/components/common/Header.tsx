@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import StakkLogoWide from "./LogoWide";
 import { useHeader } from "@/hooks/useHeader";

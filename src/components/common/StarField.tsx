@@ -1,5 +1,5 @@
-'use client'
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+"use client";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 
 interface Star {
   x: number;
@@ -18,7 +18,12 @@ interface StarfieldProps {
 
 const MAX_TAIL_LENGTH = 3;
 
-const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace, style }) => {
+const Starfield: React.FC<StarfieldProps> = ({
+  minHeight,
+  starCount,
+  hyperSpace,
+  style,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const starsRef = useRef<Star[]>([]);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -36,9 +41,9 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
   }, [minHeight]);
 
   useEffect(() => {
-    window.addEventListener('resize', updateDimensions);
+    window.addEventListener("resize", updateDimensions);
     updateDimensions();
-    return () => window.removeEventListener('resize', updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
   }, [updateDimensions]);
 
   useEffect(() => {
@@ -56,7 +61,7 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const { width, height } = dimensions;
@@ -106,12 +111,12 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
           ctx.beginPath();
           ctx.moveTo(star.tail[0].x, star.tail[0].y);
           star.tail.forEach((point) => ctx.lineTo(point.x, point.y));
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
           ctx.lineWidth = radius * 2;
           ctx.stroke();
         }
 
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, Math.PI * 2);
         ctx.fill();
@@ -133,13 +138,13 @@ const Starfield: React.FC<StarfieldProps> = ({ minHeight, starCount, hyperSpace,
     <canvas
       ref={canvasRef}
       style={{
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
-        width: '100%',
+        width: "100%",
         height: `${dimensions.height}px`,
-        pointerEvents: 'none',
-        background: 'transparent',
+        pointerEvents: "none",
+        background: "transparent",
         ...style,
       }}
     />

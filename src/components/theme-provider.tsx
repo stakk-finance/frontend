@@ -1,7 +1,7 @@
 // components/theme-provider.tsx
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
 type ColorWithVariants = {
   DEFAULT: string;
@@ -26,11 +26,14 @@ type ThemeProviderProps = {
   theme: Theme;
 };
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, theme }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+  theme,
+}) => {
   React.useEffect(() => {
     const root = document.documentElement;
     Object.entries(theme.colors).forEach(([key, value]) => {
-      if (typeof value === 'string') {
+      if (typeof value === "string") {
         root.style.setProperty(`--${key}`, value);
       } else {
         Object.entries(value).forEach(([subKey, subValue]) => {

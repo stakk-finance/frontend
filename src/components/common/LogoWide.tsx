@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import StakkLogo from "./Logo";
@@ -9,11 +9,14 @@ export default function StakkLogoWide() {
 
   const handleLogoClick = () => {
     router.push("/");
-  }
+  };
 
   return (
     <React.Fragment>
-      <div onClick={handleLogoClick} className="cursor-pointer flex flex-row gap-1 items-center">
+      <div
+        onClick={handleLogoClick}
+        className="cursor-pointer flex flex-row gap-1 items-center"
+      >
         <div className="w-6 h-6 lg:w-8 lg:h-8">
           <StakkLogo />
         </div>

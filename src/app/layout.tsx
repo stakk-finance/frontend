@@ -17,10 +17,10 @@ const geistMono = localFont({
 });
 
 const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
+  subsets: ["latin"],
+  variable: "--font-montserrat",
   weight: "variable",
-})
+});
 
 export const metadata: Metadata = {
   title: "Stakk Finance - AI Powered Staking",

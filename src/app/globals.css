@@ -13,9 +13,15 @@ body {
 }
 
 @keyframes moveGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .animate-gradient {
@@ -24,27 +30,45 @@ body {
 }
 
 .grid-background {
-background-image: 
-     linear-gradient(to right, rgba(255,255,255,0.1) 2px, transparent 2px),
-     linear-gradient(to bottom, rgba(255,255,255,0.1) 2px, transparent 2px);
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 2px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
   background-size: 30px 30px;
-  -webkit-mask-image: radial-gradient(ellipse 800px 200px at center, black 0, rgba(0, 0, 0, 0.5) 600px 150px, transparent 800px 200px);
-  mask-image: radial-gradient(ellipse 800px 200px at center, black 0, rgba(0, 0, 0, 0.5) 600px 150px, transparent 800px 200px);
+  -webkit-mask-image: radial-gradient(
+    ellipse 800px 200px at center,
+    black 0,
+    rgba(0, 0, 0, 0.5) 600px 150px,
+    transparent 800px 200px
+  );
+  mask-image: radial-gradient(
+    ellipse 800px 200px at center,
+    black 0,
+    rgba(0, 0, 0, 0.5) 600px 150px,
+    transparent 800px 200px
+  );
 }
 
 .grid-background:hover {
-  background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px);
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
 }
 
 .radial-bg {
-  background: radial-gradient(circle at top right, #4147D3AF 10%, #222222 80%);
+  background: radial-gradient(circle at top right, #4147d3af 10%, #222222 80%);
   width: 100%;
 }
 
 .emboss-text {
-  text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.7);
+  text-shadow:
+    -1px -1px 0px rgba(255, 255, 255, 0.3),
+    1px 1px 0px rgba(0, 0, 0, 0.7);
 }
 
 .card-stack-item {

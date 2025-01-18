@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import { useEffect } from "react";
 
 const partners = [
   { name: "Partner 1", logo: "/images/bybit-logo-wide-dark.svg" },
@@ -15,20 +17,25 @@ const partners = [
 ];
 
 export default function PartnersMarquee() {
+  const { width } = useWindowSize();
+  const controls = useAnimation();
+  const baseDuration = 20;
+  const mobileDuration = baseDuration * (width / 1200);
+
+  useEffect(() => {
+    controls.start({
+      x: ["-100%", "0%"],
+      transition: {
+        ease: "linear",
+        duration: mobileDuration,
+        repeat: Infinity,
+      },
+    });
+  }, [controls, mobileDuration]);
   return (
     <div className="w-full overflow-hidden border-t border-b border-border-light/20 bg-background/30 backdrop-blur-2xl py-6 relative z-30 mt-[80vh]">
       <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background z-20 pointer-events-none" />
-      <motion.div
-        className="flex"
-        animate={{
-          x: ["-100%", "0%"],
-          transition: {
-            ease: "linear",
-            duration: 20,
-            repeat: Infinity,
-          },
-        }}
-      >
+      <motion.div className="flex" animate={controls}>
         {[...partners, ...partners].map((partner, index) => (
           <div
             key={index}

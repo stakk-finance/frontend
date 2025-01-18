@@ -2,6 +2,25 @@
 
 This project is a modern frontend application built with Next.js, Tailwind CSS, TypeScript, and shadcn/ui. It features a centralized theming system for consistent and easy-to-manage styling across the entire application.
 
+## 🔄 Session Context Preservation
+
+To maintain context across sessions, provide these files:
+```bash
+README.md theme.ts tailwind.config.ts shadcn-theme.ts src/components/theme-provider.tsx src/app/layout.tsx next.config.ts postcss.config.mjs src/app/page.tsx src/lib/utils.ts src/hooks/useHeader.tsx src/hooks/useSample.tsx .eslintrc.json tsconfig.json components.json src/components/common/Header.tsx src/components/landing-sections/Hero.tsx src/components/landing-sections/AppShowcase.tsx src/components/landing-sections/WhyStakkSection.tsx
+```
+
+These files provide:
+- Theme configuration and styling system
+- Core layout and routing
+- Main page components
+- Shared utilities and hooks
+- Development environment configuration
+
+For additional context about specific features or components, please provide:
+- The component's path
+- A brief description of its purpose
+- Any relevant implementation details
+
 ## 🎨 Centralized Theming
 
 Our theming system allows for easy color management and consistency across the entire application. Here's how it works:

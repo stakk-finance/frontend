@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { FAQAccordion } from "./FAQAccordion";
 import { Brain, Droplet, Lock, Vote } from "lucide-react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -73,7 +74,17 @@ export default function WhyStakkSection() {
       className="w-full py-32 relative overflow-hidden border-t border-b border-border-light/20 bg-background/30 backdrop-blur-2xl"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            duration: 0.6,
+            when: "beforeChildren",
+            staggerChildren: 0.1
+          }
+        }
+      }}
     >
       {/* Animated background */}
       <motion.div 
@@ -195,6 +206,41 @@ export default function WhyStakkSection() {
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div 
+          className="mt-32"
+          variants={containerVariants}
+        >
+          <motion.h2 
+            className="text-3xl font-bold text-center mb-8 text-primary"
+            variants={itemVariants}
+          >
+            Frequently Asked Questions
+          </motion.h2>
+          
+          <FAQAccordion items={[
+            {
+              question: "How does Stakk ensure the security of my funds?",
+              answer: "We use audited smart contracts and implement multiple layers of security measures, including cold storage for the majority of funds and regular security audits."
+            },
+            {
+              question: "What makes Stakk different from other staking platforms?",
+              answer: "Our AI-driven yield optimization and multi-chain support allow you to maximize returns across different ecosystems while maintaining a simple user experience."
+            },
+            {
+              question: "Can I unstake my assets at any time?",
+              answer: "Yes, our platform offers flexible staking options with no lock-up periods, allowing you to unstake your assets whenever you need."
+            },
+            {
+              question: "How are the yields calculated?",
+              answer: "Yields are calculated based on real-time market conditions and the performance of various DeFi protocols. Our AI continuously monitors and optimizes your positions."
+            },
+            {
+              question: "What chains does Stakk support?",
+              answer: "Currently we support Solana, Ethereum, and Polygon, with more chains coming soon. Our multi-chain architecture allows for seamless integration of new ecosystems."
+            }
+          ]}/>
         </motion.div>
       </motion.div>
     </motion.section>

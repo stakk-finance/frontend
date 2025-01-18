@@ -9,9 +9,12 @@ interface Star {
   tail: { x: number; y: number }[];
 }
 
+const MOBILE_BREAKPOINT = 768; // px
+const MOBILE_STAR_FACTOR = 0.5; // Reduce stars by 50% on mobile
+
 interface StarfieldProps {
   minHeight: number;
-  starCount: number;
+  starCount: number; // Keep it as starCount
   hyperSpace: boolean;
   style?: React.CSSProperties;
 }
@@ -28,7 +31,11 @@ const Starfield: React.FC<StarfieldProps> = ({
   const starsRef = useRef<Star[]>([]);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const speedRef = useRef(2);
-  const animationRef = useRef<number>();
+
+  const getAdjustedStarCount = useCallback(() => {
+    const isMobile = window.innerWidth < MOBILE_BREAKPOINT;
+    return isMobile ? Math.floor(starCount * MOBILE_STAR_FACTOR) : starCount;
+  }, [starCount]);
 
   const updateDimensions = useCallback(() => {
     if (canvasRef.current) {
@@ -48,14 +55,16 @@ const Starfield: React.FC<StarfieldProps> = ({
 
   useEffect(() => {
     const { width, height } = dimensions;
-    starsRef.current = Array.from({ length: starCount }, () => ({
+    const adjustedStarCount = getAdjustedStarCount();
+
+    starsRef.current = Array.from({ length: adjustedStarCount }, () => ({
       x: Math.random() * width - width / 2,
       y: Math.random() * height - height / 2,
       z: Math.random() * width,
       radius: Math.random() * 1.5 + 0.5,
       tail: [],
     }));
-  }, [dimensions, starCount]);
+  }, [dimensions, getAdjustedStarCount]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -73,20 +82,28 @@ const Starfield: React.FC<StarfieldProps> = ({
     const accelerationRate = 1.2;
     const decelerationRate = 0.95;
 
+    let animationFrameId: number;
+
     const animate = () => {
+      if (!ctx) return;
+
       speedRef.current = hyperSpace
         ? Math.min(hyperSpeedMax, speedRef.current * accelerationRate)
         : Math.max(normalSpeed, speedRef.current * decelerationRate);
 
       ctx.clearRect(0, 0, width, height);
 
+      const halfWidth = width / 2;
+      const halfHeight = height / 2;
+      const currentSpeed = speedRef.current;
+
       starsRef.current.forEach((star, index) => {
-        star.z -= speedRef.current;
+        star.z -= currentSpeed;
 
         if (star.z <= 0) {
           starsRef.current[index] = {
-            x: Math.random() * width - width / 2,
-            y: Math.random() * height - height / 2,
+            x: Math.random() * width - halfWidth,
+            y: Math.random() * height - halfHeight,
             z: width,
             radius: Math.random() * 1.5 + 0.5,
             tail: [],
@@ -94,12 +111,22 @@ const Starfield: React.FC<StarfieldProps> = ({
           return;
         }
 
-        const x = star.x / (star.z / width) + width / 2;
-        const y = star.y / (star.z / width) + height / 2;
-        const radius = star.radius * (1 - star.z / width);
+        const zFactor = star.z / width;
+        const x = star.x / zFactor + halfWidth;
+        const y = star.y / zFactor + halfHeight;
+        const radius = star.radius * (1 - zFactor);
 
         if (!isFinite(x) || !isFinite(y) || !isFinite(radius) || radius <= 0) {
           return;
+        }
+
+        if (star.tail.length > 0) {
+          ctx.beginPath();
+          ctx.moveTo(star.tail[0].x, star.tail[0].y);
+          ctx.lineTo(x, y);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.5 * (1 - zFactor)})`;
+          ctx.lineWidth = radius * 2;
+          ctx.stroke();
         }
 
         star.tail.unshift({ x, y });
@@ -107,29 +134,22 @@ const Starfield: React.FC<StarfieldProps> = ({
           star.tail.pop();
         }
 
-        if (star.tail.length > 1) {
-          ctx.beginPath();
-          ctx.moveTo(star.tail[0].x, star.tail[0].y);
-          star.tail.forEach((point) => ctx.lineTo(point.x, point.y));
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
-          ctx.lineWidth = radius * 2;
-          ctx.stroke();
-        }
-
-        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.fillStyle = `rgba(255, 255, 255, ${0.8 * (1 - zFactor)})`;
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, Math.PI * 2);
         ctx.fill();
       });
 
-      animationRef.current = requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate();
+    // Start the animation
+    animationFrameId = requestAnimationFrame(animate);
 
+    // Cleanup function
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
       }
     };
   }, [dimensions, hyperSpace]);

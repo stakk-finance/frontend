@@ -4,6 +4,21 @@ export const colors = {
     lighter: '#2a2a2a',
     darker: '#1a1a1a',
   },
+  success: {
+    DEFAULT: '#4ade80',
+    light: '#86efac',
+    dark: '#16a34a'
+  },
+  warning: {
+    DEFAULT: '#facc15',
+    light: '#fde047',
+    dark: '#eab308'
+  },
+  chart: {
+    primary: '#3b62ff',
+    secondary: '#4ade80',
+    tertiary: '#facc15'
+  },
   primary: {
     DEFAULT: '#3b62ff',
     light: '#6a8bff',

@@ -13,8 +13,10 @@ const config: Config = {
       animation: {
         float: "float 2s ease-in-out infinite",
         "float-slower": "float 3s ease-in-out infinite",
-        "float-slowest": "float 2.5s ease-in-out infinite",
-        'gradient': 'moveGradient 4s ease infinite'
+        "float-slowest": "float 4s ease-in-out infinite",
+        'gradient': 'moveGradient 4s ease infinite',
+        'coin-float': 'coinFloat 5s ease-in-out infinite',
+        'coin-spin': 'coinSpin 6s linear infinite'
       },
       keyframes: {
         float: {
@@ -22,6 +24,15 @@ const config: Config = {
           "50%": { transform: "translateY(-5px) translateX(-5px)" },
           "100%": { transform: "translateY(0) translateX(0)" },
         },
+        coinFloat: {
+          "0%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        coinSpin: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        }
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

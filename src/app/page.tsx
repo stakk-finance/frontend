@@ -1,6 +1,7 @@
 "use client";
 
 import AppShowcaseSection from "@/components/landing-sections/AppShowcase";
+import FeaturesSection from "@/components/landing-sections/FeaturesSection";
 import HeroSection from "@/components/landing-sections/Hero";
 import PartnersMarquee from "@/components/landing-sections/PartnersMarquee";
 import React, { useEffect, useState, useCallback } from "react";
@@ -56,6 +57,7 @@ const Home = () => {
 
       <div className="z-40 w-full space-y-section py-section">
         <AppShowcaseSection />
+        <FeaturesSection />
         <WhyStakkSection />
         <Footer />
       </div>

@@ -1,11 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Droplet, Lock, Vote } from "lucide-react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 export default function WhyStakkSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -23,8 +30,16 @@ export default function WhyStakkSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
   };
+
   const features = [
     {
       icon: Brain,
@@ -55,48 +70,129 @@ export default function WhyStakkSection() {
   return (
     <motion.section 
       ref={ref}
-      className="w-full py-content"
+      className="w-full py-32 relative overflow-hidden border-t border-b border-border-light/20 bg-background/30 backdrop-blur-2xl"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      transition={{ duration: 0.4 }}
+      variants={containerVariants}
     >
+      {/* Animated background */}
       <motion.div 
-        className="w-full lg:w-xl mx-auto px-content"
+        className="absolute inset-0 -z-20 overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        {/* Colored shapes */}
+        <motion.div
+          className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary/20 blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-secondary/20 blur-3xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.3, 1],
+            rotate: [0, -180, -360]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-accent/20 blur-3xl"
+          animate={{
+            x: [0, 50, 0],
+            y: [0, 100, 0],
+            scale: [1, 1.1, 1],
+            rotate: [0, 90, 180]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </motion.div>
+
+      {/* Animated gradient */}
+      <motion.div 
+        style={{ y }}
+        className="absolute inset-0 -z-10"
+        animate={{
+          background: [
+            'linear-gradient(45deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)',
+            'linear-gradient(135deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)',
+            'linear-gradient(225deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)',
+            'linear-gradient(315deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)'
+          ]
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+
+      <motion.div 
+        className="max-w-7xl mx-auto px-content"
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
       >
         <motion.h2 
-          className="text-3xl font-bold text-center mb-contentLg text-primary"
+          className="text-3xl font-bold text-center mb-16 text-primary"
           variants={itemVariants}
         >
           Why Stakk?
         </motion.h2>
+
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              className="group perspective-1000"
             >
               <Card
-              key={index}
-              className="border-border-light/30 bg-card hover:bg-background-darker/90 cursor-pointer transition-colors bg-gradient-to-b from-primary/20 to-primary/5 rounded-2xl"
-            >
-              <CardHeader>
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="text-xl font-semibold">
-                  {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <span className="text-secondary text-sm">
-                  {feature.description}
-                </span>
-              </CardContent>
-            </Card>
+                className={cn(
+                  "h-full border-border-light/30 bg-card/80 hover:bg-background-darker/80",
+                  "cursor-pointer transition-all duration-300",
+                  "bg-gradient-to-b from-primary/20 to-primary/5 rounded-2xl",
+                  "overflow-hidden relative group-hover:shadow-lg group-hover:shadow-primary/10"
+                )}
+              >
+                <div className="absolute inset-0 rounded-2xl border border-border/20 pointer-events-none" />
+                <CardHeader className="pb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <feature.icon className="w-8 h-8 text-primary group-hover:scale-125 transition-transform" />
+                  </div>
+                  <CardTitle className="text-2xl font-bold">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <span className="text-secondary text-base leading-relaxed">
+                    {feature.description}
+                  </span>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </motion.div>

@@ -43,7 +43,14 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-montserrat)', 'sans-serif']
-      }
+      },
+      spacing: {
+        section: '6rem',
+        sectionLg: '8rem',
+        sectionXl: '10rem',
+        content: '2rem',
+        contentLg: '3rem',
+      },
     }
   },
   plugins: [require("tailwindcss-animate")],

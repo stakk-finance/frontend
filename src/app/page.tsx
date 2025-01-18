@@ -51,10 +51,9 @@ const Home = () => {
         <HeroSection />
       </motion.div>
 
-      <PartnersMarquee />
-
-      {/* Rest of the content */}
-      <div className="z-40 w-full">
+      {/* Content sections */}
+      <div className="z-40 w-full space-y-section py-section">
+        <PartnersMarquee />
         <AppShowcaseSection />
         <WhyStakkSection />
         <Footer />

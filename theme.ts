@@ -47,6 +47,13 @@ export const sizes = {
   height: {
     header: '50px',
     mainSection: '700px',
+  },
+  spacing: {
+    section: '6rem', // 96px
+    sectionLg: '8rem', // 128px
+    sectionXl: '10rem', // 160px
+    content: '2rem', // 32px
+    contentLg: '3rem', // 48px
   }
 };
 

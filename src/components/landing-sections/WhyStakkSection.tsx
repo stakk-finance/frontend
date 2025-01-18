@@ -30,9 +30,9 @@ export default function WhyStakkSection() {
   ];
 
   return (
-    <section className="py-24 w-full flex justify-center items-center">
-      <div className="w-full lg:w-xl px-4 md:px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-primary">
+    <section className="w-full py-content">
+      <div className="w-full lg:w-xl mx-auto px-content">
+        <h2 className="text-3xl font-bold text-center mb-contentLg text-primary">
           Why Stakk?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

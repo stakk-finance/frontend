@@ -10,6 +10,7 @@ import Image from "next/image";
 import bgHero from "../../public/backgrounds/bg-hero-home.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import WhyStakkSection from "@/components/landing-sections/WhyStakkSection";
+import PartnersSection from "@/components/landing-sections/PartnersSection";
 
 const Home = () => {
   const [windowHeight, setWindowHeight] = useState(0);
@@ -59,6 +60,7 @@ const Home = () => {
         <AppShowcaseSection />
         <FeaturesSection />
         <WhyStakkSection />
+        <PartnersSection />
         <Footer />
       </div>
     </main>

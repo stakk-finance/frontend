@@ -2,6 +2,7 @@
 
 import AppShowcaseSection from '@/components/landing-sections/AppShowcase';
 import HeroSection from '@/components/landing-sections/Hero';
+import PartnersMarquee from '@/components/landing-sections/PartnersMarquee';
 import React, { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import bgHero from "../../public/backgrounds/bg-hero-home.png";
@@ -44,15 +45,16 @@ const Home = () => {
           willChange: 'opacity, transform',
           zIndex: 30
         }}
-        className="fixed top-0 left-0 w-full h-[90vh] z-10"
+        className="fixed top-0 left-0 w-full h-screen z-10"
       >
         <HeroSection />
       </motion.div>
-      <div className='mt-[90vh] z-40'>
-        <AppShowcaseSection />
-      </div>
 
-      <div className='z-50 w-full'>
+    <PartnersMarquee />
+
+      {/* Rest of the content */}
+      <div className='z-40 w-full'>
+        <AppShowcaseSection />
         <WhyStakkSection />
       </div>
     </main>

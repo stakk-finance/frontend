@@ -4,6 +4,7 @@ import AppShowcaseSection from "@/components/landing-sections/AppShowcase";
 import HeroSection from "@/components/landing-sections/Hero";
 import PartnersMarquee from "@/components/landing-sections/PartnersMarquee";
 import React, { useEffect, useState, useCallback } from "react";
+import Footer from "@/components/common/Footer";
 import Image from "next/image";
 import bgHero from "../../public/backgrounds/bg-hero-home.png";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -56,6 +57,7 @@ const Home = () => {
       <div className="z-40 w-full">
         <AppShowcaseSection />
         <WhyStakkSection />
+        <Footer />
       </div>
     </main>
   );

@@ -2,6 +2,7 @@ import { useHeader } from "@/hooks/useHeader";
 import { Button } from "../ui/button";
 import Starfield from "../common/StarField";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const { setIsVisible } = useHeader();
@@ -18,9 +19,19 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center relative overflow-hidden">
+    <motion.div
+      className="w-full h-full flex justify-center items-center relative overflow-hidden"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <Starfield minHeight={400} starCount={1000} hyperSpace={hyperSpace} />
-      <div className="flex-1 min-h-mainSection max-w-xl flex flex-col justify-center items-center relative text-center space-y-content px-content">
+      <motion.div
+        className="flex-1 min-h-mainSection max-w-xl flex flex-col justify-center items-center relative text-center space-y-content px-content"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.4 }}
+      >
         <span className="text-4xl md:text-4xl lg:text-6xl font-bold max-w-lg emboss-text">
           Maximize Your Yield with AI-Powered Staking
         </span>
@@ -30,18 +41,19 @@ export default function HeroSection() {
           BONK, all in one platform.
         </span>
 
-        <div className="flex flex-row gap-4 items-center justify-center mt-8">
+        <div
+          className="flex flex-row gap-4 items-center justify-center mt-8 relative z-50"
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
           <div className="relative group inline-block">
             <div
-              className="absolute -inset-0.5 opacity-0 group-hover:opacity-60 rounded-xl blur-sm animate-gradient bg-gradient-to-r from-[#e96443] via-primary to-[#e96443] 
+              className="absolute -inset-0.5 opacity-0 group-hover:opacity-60 rounded-xl blur-sm animate-gradient bg-gradient-to-r from-[#e96443] via-primary to-[#e96443]
               group-hover:-inset-1 group-hover:blur-lg transition duration-300 ease-in-out"
             />
             <Button
               className="relative z-50"
               onClick={() => setIsVisible((prev) => !prev)}
-              onMouseEnter={onMouseEnter}
-              onMouseLeave={onMouseLeave}
-              style={{ pointerEvents: "auto" }}
             >
               Join Waitlist
             </Button>
@@ -49,12 +61,11 @@ export default function HeroSection() {
           <Button
             variant={"outline"}
             className="z-50"
-            style={{ pointerEvents: "auto" }}
           >
             Launch App
           </Button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

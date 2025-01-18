@@ -1,7 +1,30 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Droplet, Lock, Vote } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function WhyStakkSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-20%" });
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+        when: "beforeChildren",
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+  };
   const features = [
     {
       icon: Brain,
@@ -30,14 +53,33 @@ export default function WhyStakkSection() {
   ];
 
   return (
-    <section className="w-full py-content">
-      <div className="w-full lg:w-xl mx-auto px-content">
-        <h2 className="text-3xl font-bold text-center mb-contentLg text-primary">
+    <motion.section 
+      ref={ref}
+      className="w-full py-content"
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      transition={{ duration: 0.4 }}
+    >
+      <motion.div 
+        className="w-full lg:w-xl mx-auto px-content"
+        variants={containerVariants}
+      >
+        <motion.h2 
+          className="text-3xl font-bold text-center mb-contentLg text-primary"
+          variants={itemVariants}
+        >
           Why Stakk?
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        </motion.h2>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={containerVariants}
+        >
           {features.map((feature, index) => (
-            <Card
+            <motion.div
+              key={index}
+              variants={itemVariants}
+            >
+              <Card
               key={index}
               className="border-border-light/30 bg-card hover:bg-background-darker/90 cursor-pointer transition-colors bg-gradient-to-b from-primary/20 to-primary/5 rounded-2xl"
             >
@@ -55,9 +97,10 @@ export default function WhyStakkSection() {
                 </span>
               </CardContent>
             </Card>
+            </motion.div>
           ))}
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }

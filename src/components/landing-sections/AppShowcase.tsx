@@ -4,12 +4,13 @@ import AppShowcaseLayout from "./AppShowcaseSections/AppShowcaseLayout";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-export default function AppShowcaseSection() {
+export default function AppShowcaseSection({ id }: { id?: string }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
 
   return (
     <motion.section
+      id={id}
       ref={ref}
       className="w-full py-content"
       initial={{ opacity: 0, y: 20 }}

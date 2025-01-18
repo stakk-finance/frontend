@@ -9,7 +9,7 @@ export default function AppShowcaseSection() {
   const isInView = useInView(ref, { once: true, margin: "-20%" });
 
   return (
-    <motion.section 
+    <motion.section
       ref={ref}
       className="w-full py-content"
       initial={{ opacity: 0, y: 20 }}

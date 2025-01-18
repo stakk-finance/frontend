@@ -7,9 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import {cn} from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
-export default function FeaturesSection() {
+export default function FeaturesSection({ id }: { id?: string }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
 
@@ -22,14 +22,14 @@ export default function FeaturesSection() {
         duration: 0.4,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
   };
 
   const features = [
@@ -54,8 +54,8 @@ export default function FeaturesSection() {
           </div>
           <div className="relative">
             <div className="absolute inset-0 h-2 bg-background-darker/50 rounded-full" />
-            <div 
-              className="h-2 rounded-full bg-primary" 
+            <div
+              className="h-2 rounded-full bg-primary"
               style={{ width: `${78}%` }}
             />
           </div>
@@ -64,11 +64,14 @@ export default function FeaturesSection() {
             <span className="text-muted-foreground">Total: 100 SOL</span>
           </div>
           <Separator />
-          <Button variant="outline" className="w-full hover:bg-primary/10 hover:border-primary/20 transition-colors">
+          <Button
+            variant="outline"
+            className="w-full hover:bg-primary/10 hover:border-primary/20 transition-colors"
+          >
             Manage Stake
           </Button>
         </div>
-      )
+      ),
     },
     {
       icon: Coins,
@@ -83,8 +86,8 @@ export default function FeaturesSection() {
               <div className="relative">
                 <div className="relative">
                   <div className="absolute inset-0 h-2 bg-background-darker/50 rounded-full" />
-                  <div 
-                    className="h-2 rounded-full bg-warning" 
+                  <div
+                    className="h-2 rounded-full bg-warning"
                     style={{ width: `${45}%` }}
                   />
                 </div>
@@ -94,8 +97,8 @@ export default function FeaturesSection() {
               <p className="text-sm font-medium">Solana</p>
               <div className="relative">
                 <div className="absolute inset-0 h-2 bg-background-darker/50 rounded-full" />
-                <div 
-                  className="h-2 rounded-full bg-primary" 
+                <div
+                  className="h-2 rounded-full bg-primary"
                   style={{ width: `${78}%` }}
                 />
               </div>
@@ -116,12 +119,13 @@ export default function FeaturesSection() {
             View All Chains
           </Button>
         </div>
-      )
+      ),
     },
     {
       icon: PieChart,
       title: "AI-Driven Analytics",
-      description: "Our advanced AI analyzes market conditions and allocates your assets to the most profitable DeFi protocols.",
+      description:
+        "Our advanced AI analyzes market conditions and allocates your assets to the most profitable DeFi protocols.",
       animation: "float-slowest",
       preview: (
         <div className="space-y-4">
@@ -145,10 +149,10 @@ export default function FeaturesSection() {
                 <span className="text-muted-foreground">Allocation</span>
               </div>
               <div className="space-y-2 mt-2">
-                {['Jupiter', 'Marinade', 'Solend'].map((protocol, i) => (
+                {["Jupiter", "Marinade", "Solend"].map((protocol, i) => (
                   <div key={i} className="flex justify-between text-sm">
                     <span>{protocol}</span>
-                    <span className="font-medium">{(25 + i * 15)}%</span>
+                    <span className="font-medium">{25 + i * 15}%</span>
                   </div>
                 ))}
               </div>
@@ -159,12 +163,13 @@ export default function FeaturesSection() {
             View Analytics
           </Button>
         </div>
-      )
+      ),
     },
     {
       icon: Rocket,
       title: "Optimized Yields",
-      description: "Maximize your returns with our intelligent yield optimization strategies and risk management.",
+      description:
+        "Maximize your returns with our intelligent yield optimization strategies and risk management.",
       animation: "float",
       preview: (
         <div className="space-y-4">
@@ -188,12 +193,14 @@ export default function FeaturesSection() {
                 <span className="text-muted-foreground">APY</span>
               </div>
               <div className="space-y-2 mt-2">
-                {['Liquid Staking', 'Lending', 'Yield Aggregator'].map((strategy, i) => (
-                  <div key={i} className="flex justify-between text-sm">
-                    <span>{strategy}</span>
-                    <span className="font-medium">{(6 + i * 2)}%</span>
-                  </div>
-                ))}
+                {["Liquid Staking", "Lending", "Yield Aggregator"].map(
+                  (strategy, i) => (
+                    <div key={i} className="flex justify-between text-sm">
+                      <span>{strategy}</span>
+                      <span className="font-medium">{6 + i * 2}%</span>
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           </div>
@@ -202,20 +209,21 @@ export default function FeaturesSection() {
             View Strategies
           </Button>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   return (
-    <motion.section 
+    <motion.section
       ref={ref}
+      id={id}
       className="w-full py-section"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
     >
       <div className="w-full lg:w-xl mx-auto px-content">
-        <motion.h2 
+        <motion.h2
           className="text-3xl font-bold text-center mb-contentLg text-primary"
           variants={itemVariants}
         >
@@ -223,20 +231,22 @@ export default function FeaturesSection() {
         </motion.h2>
 
         {/* Features Grid */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
           variants={containerVariants}
         >
           {features.map((feature, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               variants={itemVariants}
               className="relative group"
             >
               <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <Card className={cn(
-                "h-full border-border-light/30 bg-card/80 hover:bg-background-darker/80 cursor-pointer transition-colors bg-gradient-to-b from-primary/20 to-primary/5 rounded-2xl animate-${feature.animation} overflow-hidden relative group-hover:shadow-lg group-hover:shadow-primary/10 min-h-[400px]"
-              )}>
+              <Card
+                className={cn(
+                  "h-full border-border-light/30 bg-card/80 hover:bg-background-darker/80 cursor-pointer transition-colors bg-gradient-to-b from-primary/20 to-primary/5 rounded-2xl animate-${feature.animation} overflow-hidden relative group-hover:shadow-lg group-hover:shadow-primary/10 min-h-[400px]",
+                )}
+              >
                 <div className="absolute inset-0 rounded-2xl border border-border/20 pointer-events-none" />
                 <CardHeader className="pb-6">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">

@@ -9,19 +9,15 @@ interface CustomProgressProps {
   indicatorClassName?: string;
 }
 
-const CustomProgress = React.forwardRef<
-  HTMLDivElement,
-  CustomProgressProps
->(({ value, className, indicatorClassName, ...props }, ref) => {
-  return (
-    <div className={className} ref={ref} {...props}>
-      <Progress 
-        value={value} 
-        className={`h-2 ${indicatorClassName}`}
-      />
-    </div>
-  );
-});
+const CustomProgress = React.forwardRef<HTMLDivElement, CustomProgressProps>(
+  ({ value, className, indicatorClassName, ...props }, ref) => {
+    return (
+      <div className={className} ref={ref} {...props}>
+        <Progress value={value} className={`h-2 ${indicatorClassName}`} />
+      </div>
+    );
+  },
+);
 
 CustomProgress.displayName = "CustomProgress";
 

@@ -57,10 +57,10 @@ const Home = () => {
       <PartnersMarquee />
 
       <div className="z-40 w-full space-y-section py-section">
-        <AppShowcaseSection />
-        <FeaturesSection />
-        <WhyStakkSection />
-        <PartnersSection />
+        <AppShowcaseSection id="app-showcase" />
+        <FeaturesSection id="features" />
+        <WhyStakkSection id="why-stakk" />
+        <PartnersSection id="partners" />
         <Footer />
       </div>
     </main>

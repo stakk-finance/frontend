@@ -5,12 +5,12 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
-export default function WhyStakkSection() {
+export default function WhyStakkSection({ id }: { id?: string }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
@@ -24,21 +24,21 @@ export default function WhyStakkSection() {
         duration: 0.4,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
         duration: 0.3,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const features = [
@@ -69,8 +69,9 @@ export default function WhyStakkSection() {
   ];
 
   return (
-    <motion.section 
+    <motion.section
       ref={ref}
+      id={id}
       className="w-full py-32 relative overflow-hidden border-t border-b border-border-light/20 bg-background/30 backdrop-blur-2xl"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -81,13 +82,13 @@ export default function WhyStakkSection() {
           transition: {
             duration: 0.6,
             when: "beforeChildren",
-            staggerChildren: 0.1
-          }
-        }
+            staggerChildren: 0.1,
+          },
+        },
       }}
     >
       {/* Animated background */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 -z-20 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -100,12 +101,12 @@ export default function WhyStakkSection() {
             x: [0, 100, 0],
             y: [0, 50, 0],
             scale: [1, 1.2, 1],
-            rotate: [0, 180, 360]
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         />
         <motion.div
@@ -114,12 +115,12 @@ export default function WhyStakkSection() {
             x: [0, -100, 0],
             y: [0, -50, 0],
             scale: [1, 1.3, 1],
-            rotate: [0, -180, -360]
+            rotate: [0, -180, -360],
           }}
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         />
         <motion.div
@@ -128,49 +129,49 @@ export default function WhyStakkSection() {
             x: [0, 50, 0],
             y: [0, 100, 0],
             scale: [1, 1.1, 1],
-            rotate: [0, 90, 180]
+            rotate: [0, 90, 180],
           }}
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         />
       </motion.div>
 
       {/* Animated gradient */}
-      <motion.div 
+      <motion.div
         style={{ y }}
         className="absolute inset-0 -z-10"
         animate={{
           background: [
-            'linear-gradient(45deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)',
-            'linear-gradient(135deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)',
-            'linear-gradient(225deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)',
-            'linear-gradient(315deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)'
-          ]
+            "linear-gradient(45deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)",
+            "linear-gradient(135deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)",
+            "linear-gradient(225deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)",
+            "linear-gradient(315deg, rgba(59,98,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(59,98,255,0.1) 100%)",
+          ],
         }}
         transition={{
           duration: 15,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear",
         }}
       />
 
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto px-content"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        <motion.h2 
+        <motion.h2
           className="text-3xl font-bold text-center mb-16 text-primary"
           variants={itemVariants}
         >
           Why Stakk?
         </motion.h2>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
         >
@@ -186,7 +187,7 @@ export default function WhyStakkSection() {
                   "h-full border-border-light/30 bg-card/80 hover:bg-background-darker/80",
                   "cursor-pointer transition-all duration-300",
                   "bg-gradient-to-b from-primary/20 to-primary/5 rounded-2xl",
-                  "overflow-hidden relative group-hover:shadow-lg group-hover:shadow-primary/10"
+                  "overflow-hidden relative group-hover:shadow-lg group-hover:shadow-primary/10",
                 )}
               >
                 <div className="absolute inset-0 rounded-2xl border border-border/20 pointer-events-none" />
@@ -208,39 +209,44 @@ export default function WhyStakkSection() {
           ))}
         </motion.div>
 
-        <motion.div 
-          className="mt-32"
-          variants={containerVariants}
-        >
-          <motion.h2 
+        <motion.div className="mt-32" variants={containerVariants}>
+          <motion.h2
             className="text-3xl font-bold text-center mb-8 text-primary"
             variants={itemVariants}
           >
             Frequently Asked Questions
           </motion.h2>
-          
-          <FAQAccordion items={[
-            {
-              question: "How does Stakk ensure the security of my funds?",
-              answer: "We use audited smart contracts and implement multiple layers of security measures, including cold storage for the majority of funds and regular security audits."
-            },
-            {
-              question: "What makes Stakk different from other staking platforms?",
-              answer: "Our AI-driven yield optimization and multi-chain support allow you to maximize returns across different ecosystems while maintaining a simple user experience."
-            },
-            {
-              question: "Can I unstake my assets at any time?",
-              answer: "Yes, our platform offers flexible staking options with no lock-up periods, allowing you to unstake your assets whenever you need."
-            },
-            {
-              question: "How are the yields calculated?",
-              answer: "Yields are calculated based on real-time market conditions and the performance of various DeFi protocols. Our AI continuously monitors and optimizes your positions."
-            },
-            {
-              question: "What chains does Stakk support?",
-              answer: "Currently we support Solana, Ethereum, and Polygon, with more chains coming soon. Our multi-chain architecture allows for seamless integration of new ecosystems."
-            }
-          ]}/>
+
+          <FAQAccordion
+            items={[
+              {
+                question: "How does Stakk ensure the security of my funds?",
+                answer:
+                  "We use audited smart contracts and implement multiple layers of security measures, including cold storage for the majority of funds and regular security audits.",
+              },
+              {
+                question:
+                  "What makes Stakk different from other staking platforms?",
+                answer:
+                  "Our AI-driven yield optimization and multi-chain support allow you to maximize returns across different ecosystems while maintaining a simple user experience.",
+              },
+              {
+                question: "Can I unstake my assets at any time?",
+                answer:
+                  "Yes, our platform offers flexible staking options with no lock-up periods, allowing you to unstake your assets whenever you need.",
+              },
+              {
+                question: "How are the yields calculated?",
+                answer:
+                  "Yields are calculated based on real-time market conditions and the performance of various DeFi protocols. Our AI continuously monitors and optimizes your positions.",
+              },
+              {
+                question: "What chains does Stakk support?",
+                answer:
+                  "Currently we support Solana, Ethereum, and Polygon, with more chains coming soon. Our multi-chain architecture allows for seamless integration of new ecosystems.",
+              },
+            ]}
+          />
         </motion.div>
       </motion.div>
     </motion.section>

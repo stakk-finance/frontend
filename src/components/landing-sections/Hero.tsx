@@ -58,10 +58,7 @@ export default function HeroSection() {
               Join Waitlist
             </Button>
           </div>
-          <Button
-            variant={"outline"}
-            className="z-50"
-          >
+          <Button variant={"outline"} className="z-50">
             Launch App
           </Button>
         </div>

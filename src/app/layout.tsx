@@ -30,14 +30,6 @@ export const metadata: Metadata = {
     description: "Maximize Your Yield with AI-Powered Staking",
     url: "https://stakk.finance",
     siteName: "Stakk Finance",
-    images: [
-      {
-        url: "/images/social-preview.png",
-        width: 1200,
-        height: 630,
-        alt: "Stakk Finance - AI Powered Staking Platform",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },

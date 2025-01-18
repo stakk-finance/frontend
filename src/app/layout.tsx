@@ -24,7 +24,30 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Stakk Finance - AI Powered Staking",
-  description: "Maximize Your Yield",
+  description: "Maximize Your Yield with AI-Powered Staking",
+  openGraph: {
+    title: "Stakk Finance - AI Powered Staking",
+    description: "Maximize Your Yield with AI-Powered Staking",
+    url: "https://stakk.finance",
+    siteName: "Stakk Finance",
+    images: [
+      {
+        url: "/images/social-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Stakk Finance - AI Powered Staking Platform",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Stakk Finance - AI Powered Staking",
+    description: "Maximize Your Yield with AI-Powered Staking",
+    images: ["/images/social-preview.png"],
+    creator: "@stakkfinance",
+  },
 };
 
 export default function RootLayout({
